@@ -1,0 +1,31 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: mall-goods #服务名
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shop_goods?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: 127.0.0.1:8848
+      discovery:
+        #Nacos的注册地址
+        server-addr: 127.0.0.1:8848
+        ip: 127.0.0.1
+# ====================MybatisPlus====================
+mybatis-plus:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.gupaoedu.vip.mall.*.model  #javaBean取别名的位置
+  configuration:
+    map-underscore-to-camel-case: true  #驼峰命名法,eg:t_user
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#日志配置
+logging:
+  pattern:
+    console: "%msg%n"
